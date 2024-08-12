@@ -23,6 +23,7 @@ protocol ViewModelGestureManagerProtocol {
     func createRotationGesture() -> UIRotationGestureRecognizer
     func createPinchGesture() -> UIPinchGestureRecognizer
     func updateMask()
+    func removeMask()
 }
 
 final class ImageSelectorViewModel: ImageSelectorViewModelProtocol {
@@ -145,5 +146,9 @@ extension ImageSelectorViewModel: ViewModelGestureManagerProtocol {
     
     func updateMask() {
         gestureManager.updateMask()
+    }
+    
+    func removeMask() {
+        gestureManager.removeMask()
     }
 }

@@ -234,6 +234,7 @@ class ImageSelectorViewController: UIViewController {
     }
     
     @objc private func cancelAction () {
+        viewModel?.removeMask()
         selectedImage.image = Resources.Images.ImageSelector.plusImage.image
         viewModel?.cancelSelection()
     }

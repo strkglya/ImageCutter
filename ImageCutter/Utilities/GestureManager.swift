@@ -13,6 +13,7 @@ protocol GestureManagerProtocol {
     func createPinchGesture() -> UIPinchGestureRecognizer
     func createRotationGesture() -> UIRotationGestureRecognizer
     func updateMask()
+    func removeMask()
 }
 
 final class GestureManager: GestureManagerProtocol {
@@ -35,7 +36,10 @@ final class GestureManager: GestureManagerProtocol {
     
     func createTapGesture(action: @escaping () -> Void) -> UITapGestureRecognizer {
         self.tapAction = action
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleTapGesture)
+        )
         return tapGesture
     }
     
@@ -69,6 +73,11 @@ final class GestureManager: GestureManagerProtocol {
         let path = UIBezierPath(rect: transformedFrame)
         maskLayer.path = path.cgPath
         imageToCut.layer.mask = maskLayer
+    }
+    
+    func removeMask() {
+        imageToCut.transform = .identity
+        imageToCut.layer.mask = nil
     }
 
     // MARK: - Private Methods
