@@ -84,7 +84,8 @@
 		7ACF07B12C6227C0001D2307 /* ImageCutter */ = {
 			isa = PBXGroup;
 			children = (
-				7ADE0BAE2C6384D000B45265 /* Utilities */,
+				7AC43F412C6A1E0000C21DA7 /* Reusables */,
+				7ADE0BAE2C6384D000B45265 /* Managers */,
 				7ADE0B932C6233E700B45265 /* Modules */,
 				7ADE0B9C2C6239C900B45265 /* Resources */,
 				7ACF07C92C623166001D2307 /* Support */,
@@ -117,8 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				7ADE0B992C6234F200B45265 /* View */,
-				7ADE0B982C6234EA00B45265 /* ViewModel */,
-				7ADE0B972C6234E400B45265 /* Model */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
@@ -126,6 +125,7 @@
 		7ADE0B952C6233FD00B45265 /* SettingsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7ADE0BB42C63A3A500B45265 /* ViewModel */,
 				7ADE0BA82C624F0400B45265 /* View */,
 			);
 			path = SettingsScreen;
@@ -138,20 +138,6 @@
 				7ADE0BA52C624E3800B45265 /* View */,
 			);
 			path = ImageSelector;
-			sourceTree = "<group>";
-		};
-		7ADE0B972C6234E400B45265 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		7ADE0B982C6234EA00B45265 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		7ADE0B992C6234F200B45265 /* View */ = {
@@ -200,7 +186,6 @@
 		7ADE0BA82C624F0400B45265 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7ADE0BB42C63A3A500B45265 /* ViewModel */,
 				7ADE0BB12C63957A00B45265 /* Сell */,
 				7ADE0BA92C624F1D00B45265 /* SettingsViewController.swift */,
 			);
@@ -215,13 +200,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		7ADE0BAE2C6384D000B45265 /* Utilities */ = {
+		7ADE0BAE2C6384D000B45265 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				7AC43F412C6A1E0000C21DA7 /* Reusables */,
 				7ADE0BAF2C63853C00B45265 /* GestureManager.swift */,
 			);
-			path = Utilities;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		7ADE0BB12C63957A00B45265 /* Сell */ = {
@@ -399,7 +383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -456,7 +440,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -476,10 +460,12 @@
 				DEVELOPMENT_TEAM = 9D45S4H6SM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageCutter/Support/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -487,6 +473,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = strkglya108.ImageCutter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -503,10 +493,12 @@
 				DEVELOPMENT_TEAM = 9D45S4H6SM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageCutter/Support/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -514,6 +506,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = strkglya108.ImageCutter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

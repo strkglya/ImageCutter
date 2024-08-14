@@ -17,7 +17,7 @@ class ImageSelectorViewController: UIViewController {
         static let cropperFrameWidth: CGFloat = 2
         static let selectionLimit = 1
         static let imagePadding: CGFloat = 6
-        static let yellowFrameWidthHeight = 200
+        static let yellowFrameWidthHeight = 300
         static let selectedImageWidthHeight = 400
         static let segmentedControlLeadingTrailingOffset = 16
         static let segmentedControlBottomOffset = 15
@@ -122,6 +122,7 @@ class ImageSelectorViewController: UIViewController {
         setupGestures()
         addSubviews()
         setUpNavBar()
+        setUpNotificationCenter()
         setUpConstraints()
         updateView(for: viewModel?.getImageSelectionState() ?? false)
     }
@@ -172,6 +173,15 @@ class ImageSelectorViewController: UIViewController {
         selectedImage.addGestureRecognizer(panGesture)
         selectedImage.addGestureRecognizer(pinchGesture)
         selectedImage.addGestureRecognizer(rotationGesture)
+    }
+    
+    private func setUpNotificationCenter() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(centerAfterReopening),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
     }
     
     private func updateView(for imageSelected: Bool) {
@@ -236,6 +246,7 @@ class ImageSelectorViewController: UIViewController {
     @objc private func cancelAction () {
         viewModel?.removeMask()
         selectedImage.image = Resources.Images.ImageSelector.plusImage.image
+        originalImage = nil
         viewModel?.cancelSelection()
     }
     
@@ -243,6 +254,12 @@ class ImageSelectorViewController: UIViewController {
         guard let originalImage = originalImage else { return }
         if let viewModel = viewModel {
             selectedImage.image = viewModel.applyFilter(to: originalImage, filterIndex: filterSegmentedControl.selectedSegmentIndex)
+        }
+    }
+    
+    @objc func centerAfterReopening() {
+        if originalImage != nil {
+            viewModel?.updateMask()
         }
     }
 }

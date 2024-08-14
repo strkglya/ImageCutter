@@ -113,11 +113,18 @@ final class ImageSelectorViewModel: ImageSelectorViewModelProtocol {
     
     private func grayscaleImage(image: UIImage) -> UIImage {
         let ciImage = CIImage(image: image)
-        guard let grayscale = ciImage?.applyingFilter(Constants.grayscaleFilterName, parameters: [:]) else {
+        guard let grayscale = ciImage?.applyingFilter(
+            Constants.grayscaleFilterName,
+            parameters: [:]
+        ) else {
             return UIImage()
         }
+        
         let context = CIContext()
-        guard let cgImage = context.createCGImage(grayscale, from: grayscale.extent) else {
+        guard let cgImage = context.createCGImage(
+            grayscale,
+            from: grayscale.extent
+        ) else {
             return UIImage()
         }
         return UIImage(cgImage: cgImage)
